@@ -2,32 +2,26 @@ import React from 'react';
 import './style.css';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props){
+    super(props)
     this.state = {
-      input: '',
-      showParagraph: false,
-    };
+      click: 0
+    }
   }
+
+  Increment = ()=>{
+    this.setState({click: this.state.click + 1})
+  }
+  Decrement = () =>{
+    this.setState({click: this.state.click - 1})
+  }
+
   render() {
-    console.log(this.state.input);
     return (
       <div>
-        <textarea
-          value={this.state.input}
-          onChange={(e) => this.setState({ input: e.target.value })}
-        />
-        <br />
-        <button
-          onClick={() => {
-            this.setState({
-              showParagraph: !this.state.showParagraph,
-            });
-          }}
-        >
-          Display in uppercase
-        </button>
-        {this.state.showParagraph && <p>{this.state.input.toUpperCase()}</p>}
+        <button className='button' onClick={this.Increment}>Increment Count</button>
+        <button className='button' onClick={this.Decrement}>Decrement Count</button>
+         <h2 className='p'>{ this.state.click }</h2>
       </div>
     );
   }
