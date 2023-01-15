@@ -1,30 +1,21 @@
-import React from 'react';
-import './style.css';
+import React from 'react'
+import Navbar from './components/Navbar'
+import { Home } from './components/Home';
+import { Routes, Route } from 'react-router-dom';
+import { Admin } from './components/Admin';
+import { Student } from './components/Student';
 
-class App extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      click: 0
-    }
-  }
-
-  Increment = ()=>{
-    this.setState({click: this.state.click + 1})
-  }
-  Decrement = () =>{
-    this.setState({click: this.state.click - 1})
-  }
-
-  render() {
-    return (
-      <div>
-        <button className='button' onClick={this.Increment}>Increment Count</button>
-        <button className='button' onClick={this.Decrement}>Decrement Count</button>
-         <h2 className='p'>{ this.state.click }</h2>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/Admin' element={<Admin />} />
+        <Route path='/Student' element={<Student />} />
+      </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App
